@@ -1,0 +1,314 @@
+@import "./base.scss";
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $primary-font;
+  scroll-behavior: smooth;
+}
+
+.main {
+  @include displayFlex(column, start, center);
+  min-height: 100svh;
+  height: 100%;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+  background-color: $primary-bg-color;
+  .navComp {
+    @include displayFlex(row, space-between, center);
+    @include small {
+      @include displayFlex(column, start, start);
+      width: 100%;
+    }
+    width: 100%;
+    position: fixed;
+    padding: 0 2rem 0 2rem;
+    background-color: $primary-bg-color;
+    box-shadow: $box-shadow-primary-card;
+    z-index: 11;
+    .navButton {
+      position: absolute;
+      right: 2rem;
+      top: 1.125rem;
+      display: none;
+      @include small {
+        display: block;
+      }
+    }
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 59.59px;
+      font-family: $secondary-font;
+      color: $third-color;
+      cursor: pointer;
+    }
+
+    .navLinkWrap {
+      @include displayFlex(row);
+      gap: 2rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      list-style-type: none;
+      li {
+        a {
+          border-radius: 10px;
+          border: 1px solid $secondary-color;
+          text-decoration: none;
+          color: $secondary-color;
+          font-size: 14px;
+          line-height: 18px;
+          font-weight: 700;
+          font-family: $primary-font;
+          text-transform: capitalize;
+          padding: 0.25rem 2rem 0.25rem 2rem;
+          @include small {
+            padding: 0;
+            border: none;
+          }
+        }
+        a.active {
+          background-color: $primary-color;
+          color: white;
+          @include small {
+            background-color: transparent;
+            color: $primary-color;
+            font-size: 16px;
+          }
+        }
+        a:hover {
+          transform: scale(1.1, 1.1);
+          background-color: $primary-color;
+          transition-duration: 500ms;
+          color: white;
+          @include small {
+            background-color: transparent;
+            color: $primary-color;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    @include small {
+      .navLinkWrap {
+        @include displayFlex(column, start, start);
+        padding: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+      }
+      .navLinkWrap.open {
+        padding: 1rem 0 1rem 0;
+        height: 100%;
+        transition-duration: 1000ms;
+      }
+    }
+  }
+  .Page {
+    @include displayFlex(column, start);
+    padding: 2rem;
+    @include small {
+      padding: 1rem;
+      padding-top: 5rem;
+    }
+    padding-top: 5rem;
+    width: 100%;
+    gap: 1rem;
+    h2 {
+      color: $third-color;
+      padding: 1rem;
+      font-family: serif;
+      font-size: xx-large;
+    }
+  }
+  .card {
+    width: 100%;
+    max-width: 35rem;
+    padding: 0;
+    .contentEmail {
+      @include displayFlex(row, start, center);
+      width: calc(100% - 2rem);
+      padding: 0.5rem;
+      margin: 0 1rem 0 1rem;
+      gap: 0.25rem;
+      border-bottom: 1px solid $secondary-color;
+      svg {
+        height: 1.5rem;
+        width: auto;
+        color: $primary-color;
+        padding: 0.1rem;
+        path {
+          stroke: $primary-color;
+          stroke-width: 1.25;
+        }
+      }
+
+      p {
+        max-width: 15rem;
+        color: $primary-color;
+        font-weight: 600;
+        font-size: medium;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .cardContentWrap:last-child {
+      padding-bottom: 1rem;
+    }
+    .cardContentWrap {
+      @include displayFlex(row, space-between);
+      gap: 0.5rem;
+      align-items: center;
+      padding: 1rem;
+      .leftSideCard {
+        @include displayFlex;
+        gap: 1rem;
+        .delButtonWrap:hover {
+          cursor: pointer;
+          transform: scale(1.1, 1.1);
+          border: none;
+          box-shadow: 0 0 2px 2px red;
+        }
+        .delButtonWrap {
+          @include displayFlex;
+          min-height: 2.5rem;
+          padding: 0.5rem;
+          border-right: 2px solid red;
+          border-radius: 50%;
+          .detailButton {
+            color: red;
+          }
+        }
+        .cardContentTextWrap {
+          @include displayFlex(column, start, start);
+          gap: 0.5rem;
+          .cardContentText {
+            @include displayFlex(row, start, center);
+            gap: 0.5rem;
+            border-radius: 5px;
+            position: relative;
+            svg {
+              height: 1.5rem;
+              width: auto;
+              color: $primary-color;
+              border: 1px solid $primary-color;
+              padding: 0.1rem;
+              border-radius: 50%;
+            }
+            p {
+              max-width: 12rem;
+            }
+            p,
+            input {
+              color: $primary-color;
+              font-weight: 500;
+              font-size: medium;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            input {
+              border: 0;
+              width: 7rem;
+              overflow-x: scroll;
+            }
+            input:focus {
+              outline: none;
+            }
+            input[disabled] {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+      .detailButton {
+        color: $secondary-color;
+        height: 1.125rem;
+      }
+      .detailButton:hover {
+        cursor: pointer;
+        transform: scale(1.125, 1.125);
+      }
+    }
+  }
+  .noDataPage {
+    @include displayFlex(column);
+    height: 100svh;
+    font-size: 1.5rem;
+    gap: 1rem;
+    font-family: $secondary-font;
+    color: $third-color;
+  }
+  .AddAccount {
+    @include displayFlex;
+    padding: 0.25rem;
+    gap: 0.25rem;
+    color: $third-color;
+    font-weight: 700;
+    p {
+      text-transform: capitalize;
+    }
+  }
+  .delWrap {
+    @include displayFlex(row, space-between, end);
+    padding: 1rem;
+    width: 100%;
+    h2 {
+      font-size: 20px;
+    }
+    .delButtonWrapFromDetail {
+      @include displayFlex;
+      height: 2.5rem;
+      width: fit-content;
+      padding: 0.5rem;
+      border-right: 2px solid red;
+      border-radius: 50%;
+      .detailButton {
+        color: red;
+      }
+    }
+    .delButtonWrapFromDetail:hover {
+      cursor: pointer;
+      transform: scale(1.1, 1.1);
+      border: none;
+      box-shadow: 0 0 2px 2px red;
+    }
+    .editButton {
+      border-right: 2px solid lightblue;
+      .detailButton {
+        color: lightblue;
+      }
+    }
+    .editButton:hover {
+      box-shadow: 0 0 2px 2px lightblue;
+    }
+  }
+  .form {
+    @include displayFlex(column, center, start);
+    gap: 2rem;
+    overflow-x: hidden;
+    padding: 0 0 5rem 0;
+    input,
+    .formSelect {
+      @include small {
+        width: 15rem;
+      }
+      width: 25rem;
+    }
+    .optionError {
+      color: #d32f2f;
+      font-size: small;
+    }
+  }
+  .iconShowpass,
+  .iconShowpassForm {
+    @include displayFlex;
+    cursor: pointer;
+  }
+  .iconShowpassForm {
+    position: absolute;
+    right: 0;
+  }
+}
